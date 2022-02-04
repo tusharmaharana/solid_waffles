@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+#Fullstack Microservice Assignment 1(Intern)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Frontend
 
-## Available Scripts
+Create a singlepage web application which allows users to manage the content
 
-In the project directory, you can run:
+Landing page consists of a sign up form with email and password as fields
+Both fields in sign up form should be required
+Implement inline field validation and indicate errors
+Enable sign up button only when all fields are filled with correct validations
+After signup, use a dashboard to show all available content with title and likes
+Dashboard can fetch data from top contents api in content micro service.
+Use persistent storage to store user id, which is returned on sign up. Use this as a check for login as well for the scope of this
+assignment, if user id is not present in persistent storage then show sign up form.
+When the user clicks on a content the application should display on the same screen the following attributes: story content, title, likes
+and publishing date
+User can like a content and it should reflect in the real time.
 
-### `npm start`
+##Backend Microservices
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2 micro services - content, user-interaction service.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+###Content Service
 
-### `npm test`
+Serving books as content. The content will have a story and title, considering the scope of this assignment.
+Data ingestion should happen via csv, write a script to ingest data into the database( IdIdeally script should also be a part of your
+service). Content service should have at least the title, story, date published and the user id stored.
+Top contents API - sorted on user-interaction[Sort on basis of Number of likes]
+Testing- An API to help us post the csv file, and it should automatically invoke the data ingestion process once it receives the csv file.
+User data should be sent to User Interaction Service and stored accordingly.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###User interaction service
 
-### `npm run build`
+Add Update API for User Like event(validate if user exists)
+Add signup API for User which will take fields as userId and password
+email address should consist of an email prefix and an email domain, both in acceptable formats.
+password should follow following policy:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+a minimum of 1 upper case letter [A-Z] and
+a minimum of 1 lower case letter [a-z] and
+a minimum of 1 numeric character [0-9] and
+a minimum of 1 special character
+password must be at least 10 characters in length, but can be much longer.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+return auto generated userId in response of this API and use it to validate user
