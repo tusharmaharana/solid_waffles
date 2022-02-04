@@ -1,6 +1,6 @@
-#Fullstack Microservice Assignment 1(Intern)
+# Fullstack Microservice Assignment 1(Intern)
 
-##Frontend
+## Frontend
 
 Create a singlepage web application which allows users to manage the content
 
@@ -16,11 +16,11 @@ When the user clicks on a content the application should display on the same scr
 and publishing date
 User can like a content and it should reflect in the real time.
 
-##Backend Microservices
+## Backend Microservices
 
 2 micro services - content, user-interaction service.
 
-###Content Service
+### Content Service
 
 Serving books as content. The content will have a story and title, considering the scope of this assignment.
 Data ingestion should happen via csv, write a script to ingest data into the database( IdIdeally script should also be a part of your
@@ -29,7 +29,7 @@ Top contents API - sorted on user-interaction[Sort on basis of Number of likes]
 Testing- An API to help us post the csv file, and it should automatically invoke the data ingestion process once it receives the csv file.
 User data should be sent to User Interaction Service and stored accordingly.
 
-###User interaction service
+### User interaction service
 
 Add Update API for User Like event(validate if user exists)
 Add signup API for User which will take fields as userId and password
